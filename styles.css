@@ -54,6 +54,15 @@
     min-height: 400px;
 }
 
+.about-section {
+    background-color: ivory;
+    min-height: 80vh;
+}
+
+.about-container {
+    padding: 30px;
+}
+
 /* Projects section */
 .projects-section {
     background-color: ivory;
@@ -142,6 +151,9 @@
     color: white;
 }
 
+.fa-github {
+    color: white;
+}
 
 /*
 .linkedin-btn-container {
