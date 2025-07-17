@@ -1,12 +1,11 @@
 /* Custom variables */
 :root {
     --project-card-height: 50vh;
-    --project-card-width: 60vw;
+    --project-card-width: 30vw;
 }
 
 .navbar, h1 {
     color: ivory;
-    margin: 0 40px;
 }
 
 .navbar {
@@ -97,12 +96,36 @@
     /* Sizing */
     margin-left: 20px;
     margin-right: 20px;
-    min-width: 200px;
-    max-width: 200px;
+    width: 200px;
 
     /* Styling */
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
     color: ivory;
+}
+
+.project-card-left-container {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.project-card-left-container button {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    text-align: center; /* Centers text horizontally*/
+
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    
+    width: 100px;
+    height: 40px;
+
+
+
 }
 
 .project-card img {

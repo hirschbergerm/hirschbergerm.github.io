@@ -1,0 +1,26 @@
+.dpl-summary-container {
+    margin: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: ivory;
+}
+
+.hero-img {
+    align-items: center;
+    background-color: ivory;
+}
+
+.hero-img img {
+
+    margin-top: 20px;
+    height: 400px;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.dpl-summary {
+    margin:0; 
+}
