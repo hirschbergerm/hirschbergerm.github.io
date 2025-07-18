@@ -61,7 +61,6 @@ article {
 }
 
 /* Body Elements */
-/* Section 1 */ 
 
 .hero-banner {
     background-color: ivory;
@@ -76,9 +75,7 @@ article {
     padding-left: 10vw;
     padding-right: 10vw;
     padding-bottom: 20px;
-}
 
-.projects-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -94,7 +91,7 @@ article {
     min-width: var(--project-card-width);
 
     /* Styling */
-    background-color: olive;
+    background-color: dodgerblue;
     box-shadow: 5px 5px 5px grey;
 }
 
@@ -115,7 +112,7 @@ article {
     max-width: var(--project-card-width);
 }
 
-/* Footer elements */
+/* Footer styling */
 
 .footer {
     background-color: black;
