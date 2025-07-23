@@ -25,9 +25,11 @@
                 </div>
             </section>
 
+            <!--
             <section class="hero-banner">
                 
             </section>
+            -->
 
             <section class="projects-section">
                 <!--FreeFlyer Card-->
@@ -39,20 +41,13 @@
                         </p>
                     </div>
 
-                    <div class="slideshow-container">
-                        <div class="mySlides fade">
-                            <img src="https://www.w3docs.com/uploads/media/default/0001/03/66cf5094908491e69d8187bcf934050a4800b37f.jpeg">
+                    <div class="slideshow-container" id="ff-slideshow">
+                        <div class="slide fade">
+                            <img src="assets/images/freeflyer.jpg" style="object-fit: contain;">
                         </div>
-                        <div class="mySlides fade">
-                            <img src="https://www.w3docs.com/uploads/media/default/0001/03/b7d624354d5fa22e38b0ab1f9b905fb08ccc6a05.jpeg">
-                        </div>
-                        <div class="mySlides fade">
-                            <img src="https://www.w3docs.com/uploads/media/default/0001/03/5bfad15a7fd24d448a48605baf52655a5bbe5a71.jpeg">
-                        </div>
-                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                        <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
                     </div>
-                    <!--<img src="assets/images/freeflyer.jpg"/>-->
                 </div>
 
         
@@ -64,27 +59,53 @@
                         with attitude sensor models in Python to simulate navigation error for several lunar EVA scenarios on the ARTEMIS program.
                     </p>
                     </div>
-                    <img src=""/>
+
+                    <div class="slideshow-container" id="fdss-slideshow">
+                        <div class="slide fade">
+                            <img src="assets/images/howSmallWeAre.jpg" style="object-fit: contain;">
+                        </div>
+                        <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+                    </div>
+
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" id="nasa-dpl-card">
                     <div class="project-info">
                         <p><i>June 2022 - August 2022</i></p>
                         <p>I designed and fabricated an injector for dropping samples of lunar dust into an electrodynamic balance at NASA Marshall Spaceflight Center.
                         The results of these experiements will help NASA decide how to mitigate charge buildup during the ARTEMIS missions.
                         </p>
                     </div>
-                    <img src="assets/images/trap.jpg"/>
-                </div>
 
-                <div class="project-card">
+                    <div class="slideshow-container" id="nasa-dpl-slideshow">
+                        <div class="slide fade">
+                            <img src="assets/images/trap.jpg" style="object-fit: contain;">
+                        </div>
+                        <div class="slide fade">
+                            <img src="assets/images/vacuum-chamber.jpg" style="object-fit: cover; object-position: 0% 90%;">
+                        </div>
+                        <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
+                    </div>
+                </div> <!--End nasa-dpl-card-->
+
+                <div class="project-card" id="mitre-card">
                     <div class="project-info">
                         <p><i>June 2021 - August 2021</i></p>
                         <p> As an intern at the MITRE Corporation I researched GPS receiver performance in the Space Service Volume (SSV) and 
                         developed an internal MATLAB tool to simulate threats to GPS signal integrity.
                     </p>
                     </div>
-                    <img src="assets/images/mitre-aerospace.jpg"/>
+
+                    <div class="slideshow-container" id="mitre-slideshow">
+                        <div class="slide fade">
+                            <img src="assets/images/mitre-aerospace.jpg">
+                        </div>
+                        
+                        <a class="prev" onclick="plusSlides(-1, 3)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1, 3)">&#10095;</a>
+                    </div>
                 </div>
 
                 <div class="project-card">
@@ -94,7 +115,17 @@
                         meets its own Minimum Operational Performance Standard (MOPS). I published a paper with my findings at the ION 2021 conference.
                         </p>
                     </div>
-                    <img src="assets/images/gps-lab.jpg"/>
+
+                    <div class="slideshow-container" id="gps-lab-slideshow">
+                        <div class="slide fade">
+                            <img src="/assets/images/gps-lab.jpg">
+                        </div>
+                        <div class="slide fade">
+                            <img src="assets/images/L1 message loss.png">
+                        </div>
+                        <a class="prev" onclick="plusSlides(-1, 4)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1, 4)">&#10095;</a>
+                    </div>
                 </div>
                 <!--Script for slideshows-->
                 <script src="./assets/scripts/index.js"></script>

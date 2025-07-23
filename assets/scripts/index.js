@@ -1,45 +1,66 @@
+/*
+*   22 July 2025
+*   Matthew Hirschberger 
+*
+*   TODO:
+*       I think this code would be a bit easier to track if all the 
+*       slideshow variables were packaged into a struct.
+*
+*       I don't like tracking slideshow indices for multiple containers
+*       in one array.
+*/
+
+
 // Startup variables
-let slideIndex = 0;
 let timeoutId = null;
-const slides = document.getElementsByClassName("mySlides");
 
-showSlides();
+// Construct an array that represents the slideIndex of each slideshow
+// [slideshow1.index slideshow2.index, ...]
+//let slideshowIndices = Array(slideshows.length).fill(1);
+let slideshowIndices = [1, 1, 1, 1, 1];
 
-function currentSlide(index) {
-    slideIndex = index;
-    showSlides();
+// TODO: Replace this with some code that dynamically gets the container ids
+let slideshowIds = ["ff-slideshow", "fdss-slideshow", "nasa-dpl-slideshow", "mitre-slideshow", "gps-lab-slideshow"];
+
+// Call the showSlides function for every slideshow
+showSlides(1, 0);
+showSlides(1, 1);
+showSlides(1, 2);
+showSlides(1, 3);
+showSlides(1, 4);
+
+function plusSlides(n, no) {
+    showSlides(slideshowIndices[no] += n, no);
 }
 
-function plusSlides(step) {
+function showSlides(n, no) {
 
-    if(step < 0) {
-        slideIndex -= 2;
-        
-        if(slideIndex < 0) {
-            slideIndex = slides.length - 1;
-        }
+    // Collect all the slides in slideshow #no
+    let slideshow = document.getElementById(slideshowIds[no]);
+
+    let slides = slideshow.getElementsByClassName("slide");
+
+    if (n > slides.length) {
+        slideshowIndices[no] = 1;
     }
 
-    showSlides();
-}
+    if (n < 1) {
+        slideshowIndices[no] = slides.length;
+    }
 
-function showSlides() {
-
-    for (let i = 0; i < slides.length; i ++) {
+    // Hide all of the slides
+    for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
 
-    slideIndex++;
+    // Remember JS indexes at 0
+    slides[slideshowIndices[no] - 1].style.display = "inline";
 
-    if (slideIndex > slides.length) {
-        slideIndex = 1;
-    }
-
-    slides[slideIndex - 1].style.display = "inline";
+    /*
     if (timeoutId) {
         clearTimeout(timeoutId);
     }
 
     timeoutId = setTimeout(showSlides, 5000);
-
+    */
 }

@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "type": "msedge",
+      "name": "Debug in MsEdge",
+      "request": "launch",
+      "url": "http://localhost:8080",
+      "file":"${workspaceFolder}/index.html"
+    }
+  ]
+}
