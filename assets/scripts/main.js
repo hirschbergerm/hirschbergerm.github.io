@@ -10,9 +10,39 @@
 *       in one array.
 */
 
+import * as THREE from 'three';
 
-// Startup variables
-let timeoutId = null;
+const scene = new THREE.Scene();
+
+scene.add(new THREE.AmbientLight(0xbbbbbb));
+scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
+
+// Mimimcs human eyeballs
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+const renderer = new THREE.WebGLRenderer({
+  canvas: document.querySelector('#bg'),
+});
+
+renderer.setPixelRatio( window.devicePixelRatio );
+renderer.setSize( window.innerWidth, window.innerHeight);
+camera.position.setZ(30);
+
+const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+const material = new THREE.MeshBasicMaterial( {color: 0xFF6347, wireframe: true});
+const torus = new THREE.Mesh(geometry, material);
+
+scene.add(torus);
+
+function animate() {
+  requestAnimationFrame( animate );
+
+  torus.rotation.x += 0.01;
+
+  renderer.render( scene, camera );
+}
+
+animate();
 
 // Construct an array that represents the slideIndex of each slideshow
 // [slideshow1.index slideshow2.index, ...]
@@ -56,11 +86,4 @@ function showSlides(n, no) {
     // Remember JS indexes at 0
     slides[slideshowIndices[no] - 1].style.display = "inline";
 
-    /*
-    if (timeoutId) {
-        clearTimeout(timeoutId);
-    }
-
-    timeoutId = setTimeout(showSlides, 5000);
-    */
 }

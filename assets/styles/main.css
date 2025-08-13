@@ -65,6 +65,11 @@ article {
     min-height: 400px;
 }
 
+canvas {
+    min-height: 400px;
+    background-color: black;
+}
+
 /* ---------- Projects section ---------- */
 .projects-section {
     background-color: ivory;
