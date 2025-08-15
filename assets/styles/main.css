@@ -63,7 +63,7 @@ article {
 
 #main-banner {
     width: auto;
-    min-height: 500px;
+    min-height: 300px;
     display: flex;
     flex-direction: row;
 }
@@ -74,6 +74,8 @@ article {
     background: url('../images/digital-rain.gif') no-repeat center center;
     background-size: cover;
 
+    /*border-radius: 0 0 50% 50%;*/
+    
 }
 
 /*
@@ -109,7 +111,7 @@ article {
 .projects-section {
     background-color: ivory;
     min-height: 600px;
-    padding-top: 20px;
+    padding-top: 100px;
     padding-left: 10vw;
     padding-right: 10vw;
     padding-bottom: 20px;

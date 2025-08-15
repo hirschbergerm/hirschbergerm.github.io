@@ -33,7 +33,7 @@ camera.position.setZ(20);
 const scene = new THREE.Scene();
 
 scene.add(new THREE.AmbientLight(0xbbbbbb));
-scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
+//scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
 
 // Object loading and preparation
 const soyuz = new THREE.Object3D();
@@ -50,7 +50,7 @@ soyuz_loader.load('Soyuz.glb', function(gltf) {
     });
 
     soyuz.rotation.z = 3.1415926;
-    soyuz.rotation.y = 3.1415926 / 3;
+    soyuz.rotation.y = 3.1415926 / 2.5;
 
     // Add the model to the scene
     scene.add(soyuz);
