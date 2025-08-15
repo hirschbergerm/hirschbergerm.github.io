@@ -11,35 +11,75 @@
 */
 
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
+const canvas = document.querySelector('#bg');
+
+const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  canvas,
+  alpha: true,
+});
+
+renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+
+// Mimimcs human eyeballs
+const camera = new THREE.PerspectiveCamera( 75, 2, 0.1, 1000);
+
+renderer.setPixelRatio( window.devicePixelRatio );
+camera.position.setZ(20);
+
+// Create scene
 const scene = new THREE.Scene();
 
 scene.add(new THREE.AmbientLight(0xbbbbbb));
 scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
 
-// Mimimcs human eyeballs
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
+// Object loading and preparation
+const soyuz = new THREE.Object3D();
+const soyuz_loader = new GLTFLoader();
+soyuz_loader.load('Soyuz.glb', function(gltf) {
 
-const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector('#bg'),
+    // Add the soyuz model to the Object3D struct
+    soyuz.add(gltf.scene.children[0]);
+
+    soyuz.traverse((node) => {
+      if (!node.isMesh) return;
+      node.material.wireframe = true;
+      node.material.color.set( 0x33ff00 );
+    });
+
+    soyuz.rotation.z = 3.1415926;
+    soyuz.rotation.y = 3.1415926 / 3;
+
+    // Add the model to the scene
+    scene.add(soyuz);
+
+}, undefined, function(error) {
+    console.log(error);
 });
 
-renderer.setPixelRatio( window.devicePixelRatio );
-renderer.setSize( window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
-
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshBasicMaterial( {color: 0xFF6347, wireframe: true});
-const torus = new THREE.Mesh(geometry, material);
-
-scene.add(torus);
-
 function animate() {
-  requestAnimationFrame( animate );
+    requestAnimationFrame( animate );
 
-  torus.rotation.x += 0.01;
+    if (resizeRendererToDisplaySize(renderer)) {
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+    }
 
-  renderer.render( scene, camera );
+    soyuz.rotateX(0.001);
+    renderer.render( scene, camera );
+}
+
+function resizeRendererToDisplaySize(renderer) {
+  const canvas = renderer.domElement;
+  const width = canvas.clientWidth;
+  const height = canvas.clientHeight;
+  const needResize = canvas.width !== width || canvas.height !== height;
+  if (needResize) {
+    renderer.setSize(width, height, false);
+  }
+  return needResize;
 }
 
 animate();
