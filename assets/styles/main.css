@@ -80,7 +80,6 @@ article {
     /* Text Styling */
     background-color: rgba(0, 0, 0, 0.8);
     border: 1px solid #fff;
-    border-radius: 10px;
 
     /* Sizing */
     padding: 10px;
@@ -88,13 +87,13 @@ article {
 
     /* Positioning */
     position: absolute;
-    top: 30%;
+    top: 35%;
     left: 750px;
 }
 
 #headliner-text {
     color: white;
-    font-size: 36px;
+    font-size: 30px;
     font-family: "Lucida Console", "Courier New", monospace;
     line-height: 1.5;
     text-align: center;
