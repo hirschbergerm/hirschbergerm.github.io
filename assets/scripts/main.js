@@ -13,6 +13,8 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
+var PI = 3.1415926535;
+
 const canvas = document.querySelector('#bg');
 
 const renderer = new THREE.WebGLRenderer({
@@ -32,7 +34,7 @@ camera.position.setZ(20);
 // Create scene
 const scene = new THREE.Scene();
 
-scene.add(new THREE.AmbientLight(0xbbbbbb));
+scene.add(new THREE.AmbientLight(0xbbbbbb, 0.8));
 //scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
 
 // Object loading and preparation
@@ -49,8 +51,9 @@ soyuz_loader.load('Soyuz.glb', function(gltf) {
       node.material.color.set( 0x33ff00 );
     });
 
-    soyuz.rotation.z = 3.1415926;
-    soyuz.rotation.y = 3.1415926 / 2.5;
+    soyuz.position.x -= 8;
+    soyuz.rotation.z = PI;
+    soyuz.rotation.y = PI / 2;
 
     // Add the model to the scene
     scene.add(soyuz);
@@ -58,6 +61,28 @@ soyuz_loader.load('Soyuz.glb', function(gltf) {
 }, undefined, function(error) {
     console.log(error);
 });
+
+// Add wireframe sphere
+const geometry = new THREE.SphereGeometry(25, 20, 20);
+const material = new THREE.MeshBasicMaterial( {color: 0x33ff00, wireframe: true});
+const wire_earth = new THREE.Mesh(geometry, material);
+
+wire_earth.rotation.z = - (23.4 * (PI/180));
+wire_earth.position.y = -30;
+wire_earth.position.z = 8;
+
+scene.add(wire_earth);
+
+// Add opaque sphere
+const opaque_geometry = new THREE.SphereGeometry(25, 20, 20);
+const opaque_material = new THREE.MeshBasicMaterial( {color : 0x000000 , wireframe: false} );
+const opaque_sphere = new THREE.Mesh(opaque_geometry, opaque_material);
+
+opaque_sphere.rotation.z = - (23.4 * (PI/180));
+opaque_sphere.position.y = -30;
+opaque_sphere.position.z = 8;
+
+scene.add(opaque_sphere);
 
 function animate() {
     requestAnimationFrame( animate );
@@ -68,6 +93,8 @@ function animate() {
     }
 
     soyuz.rotateX(0.001);
+    wire_earth.rotateY(0.0001);
+    opaque_sphere.rotateY(0.0001);
     renderer.render( scene, camera );
 }
 
