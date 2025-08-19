@@ -12,9 +12,11 @@
 
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { CSS2DRenderer } from 'three/addons/renderers/CSS2DRenderer.js';
 
 var PI = 3.1415926535;
 
+// Set up the canvas
 const canvas = document.querySelector('#bg');
 
 const renderer = new THREE.WebGLRenderer({
@@ -25,7 +27,7 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 
-// Mimimcs human eyeballs
+// Camera mimimcs human eyeballs
 const camera = new THREE.PerspectiveCamera( 75, 2, 0.1, 1000);
 
 renderer.setPixelRatio( window.devicePixelRatio );
@@ -34,8 +36,15 @@ camera.position.setZ(20);
 // Create scene
 const scene = new THREE.Scene();
 
+// Add lighting
 scene.add(new THREE.AmbientLight(0xbbbbbb, 0.8));
-//scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
+
+// Add 2D headliner
+const headliner = document.querySelector('#headliner-container');
+const headliner_renderer = new CSS2DRenderer();
+headliner_renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+
+document.body.appendChild(headliner_renderer.domElement);
 
 // Object loading and preparation
 const soyuz = new THREE.Object3D();
@@ -87,70 +96,22 @@ scene.add(opaque_sphere);
 function animate() {
     requestAnimationFrame( animate );
 
-    if (resizeRendererToDisplaySize(renderer)) {
-        camera.aspect = canvas.clientWidth / canvas.clientHeight;
-        camera.updateProjectionMatrix();
-    }
-
     soyuz.rotateX(0.001);
     wire_earth.rotateY(0.0001);
     opaque_sphere.rotateY(0.0001);
     renderer.render( scene, camera );
 }
 
-function resizeRendererToDisplaySize(renderer) {
-  const canvas = renderer.domElement;
-  const width = canvas.clientWidth;
-  const height = canvas.clientHeight;
-  const needResize = canvas.width !== width || canvas.height !== height;
-  if (needResize) {
-    renderer.setSize(width, height, false);
-  }
-  return needResize;
+// 
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize(){
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
 }
 
 animate();
-
-// Construct an array that represents the slideIndex of each slideshow
-// [slideshow1.index slideshow2.index, ...]
-//let slideshowIndices = Array(slideshows.length).fill(1);
-let slideshowIndices = [1, 1, 1, 1, 1];
-
-// TODO: Replace this with some code that dynamically gets the container ids
-let slideshowIds = ["ff-slideshow", "fdss-slideshow", "nasa-dpl-slideshow", "mitre-slideshow", "gps-lab-slideshow"];
-
-// Call the showSlides function for every slideshow
-showSlides(1, 0);
-showSlides(1, 1);
-showSlides(1, 2);
-showSlides(1, 3);
-showSlides(1, 4);
-
-function plusSlides(n, no) {
-    showSlides(slideshowIndices[no] += n, no);
-}
-
-function showSlides(n, no) {
-
-    // Collect all the slides in slideshow #no
-    let slideshow = document.getElementById(slideshowIds[no]);
-
-    let slides = slideshow.getElementsByClassName("slide");
-
-    if (n > slides.length) {
-        slideshowIndices[no] = 1;
-    }
-
-    if (n < 1) {
-        slideshowIndices[no] = slides.length;
-    }
-
-    // Hide all of the slides
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-
-    // Remember JS indexes at 0
-    slides[slideshowIndices[no] - 1].style.display = "inline";
-
-}
