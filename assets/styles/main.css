@@ -1,11 +1,13 @@
 html, body {
 
-    background-color: ivory;
-
     width: 100%;
     height: 100%;
     margin: 0;
     
+}
+
+body {
+    background-color: #282828;
 }
 
 article {
@@ -103,7 +105,7 @@ article {
 
 /* ---------- Projects section ---------- */
 .projects-section {
-    background-color: ivory;
+    background-color: #282828;
     min-height: 600px;
     padding-top: 100px;
     padding-left: 10vw;
@@ -122,28 +124,25 @@ article {
 
     /* Sizing*/
     width: 100%;
-    height: 400px;
+    height: 25%;
 }
 
 .project-card .project-info {
     /* Sizing */
     margin-top: 0px;
-    width: 30%;
+    width: 40%;
 
     padding: 10px 20px 10px 20px;
 
 
     /* Styling */
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
-    color: black;
+    font-family: "Lucida Console", "Courier New", monospace;
+    color: white;
 }
-
-/* ---------- SLIDESHOW CSS ---------- */
-/*I do think we could do a CSS grid trick where we specify the % of the card that the slideshow and summary div take up*/
 
 .slideshow-container {
     height: 100%;
-    width: 70%;
+    width: 60%;
     margin: auto;
     position: relative;
     background-color: black;
@@ -192,53 +191,6 @@ article {
 .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
-
-/*
-.slide-caption {
-    color: red;
-    font-size: 15px;
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-}
-*/
-
-/* Number text (1/3 etc) 
-.numbertext {
-    color: pink;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-}
-*/
-
-/* Fading animation */
-/*
-.fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.0s;
-    animation-name: fade;
-    animation-duration: 1.0s;
-}
-
-@-webkit-keyframes fade {
-    from {
-        opacity: .4
-    } to {
-        opacity: 1
-    }
-}
-
-@keyframes fade {
-    from {
-        opacity: .4
-    }
-    to {
-        opacity: 1
-    }
-}
-*/
 
 /* ---------- Footer styling ---------- */
 .footer {

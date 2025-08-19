@@ -8,7 +8,7 @@
     padding: 0 50px 0 50px;
 
     text-align: center;
-
+    color: white;
 }
 
 
@@ -29,6 +29,8 @@
     grid-template-rows: auto auto;
     grid-template-columns: 100%;
     row-gap: 20px;
+
+    background-color: #282828;
 }
 
 .flip-card {
@@ -48,7 +50,6 @@
 
     transition: transform 0.8s;
     transform-style: preserve-3d;
-    background-color: lightblue;
 
     border-radius: 20px;
 }
